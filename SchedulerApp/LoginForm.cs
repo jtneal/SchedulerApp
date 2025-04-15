@@ -26,6 +26,7 @@ namespace SchedulerApp
 
             if (isValid)
             {
+                // Open new form, passing in user to constructor
                 Debug.WriteLine("YOU IN BRO!");
             }
         }

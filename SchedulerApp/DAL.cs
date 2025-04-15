@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using SchedulerApp.Models;
-using System.Data;
 using System.Diagnostics;
 
 namespace SchedulerApp
@@ -11,6 +10,7 @@ namespace SchedulerApp
 
         public DAL()
         {
+            //_connectionString = "server=localhost;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!";
             _connectionString = "server=localhost;user=root;database=client_schedule;port=3306;password=root";
         }
 
@@ -55,9 +55,7 @@ namespace SchedulerApp
                 }
                 else
                 {
-                    Debug.WriteLine("User not found");
-
-                    return nullUser;
+                    throw new Exception("User not found");
                 }
             }
             catch (Exception ex)
