@@ -28,18 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
+            usernameLabel = new Label();
+            passwordLabel = new Label();
+            usernameTextBox = new TextBox();
+            passwordTextBox = new TextBox();
+            loginButton = new Button();
+            errorLabel = new Label();
             SuspendLayout();
+            // 
+            // usernameLabel
+            // 
+            resources.ApplyResources(usernameLabel, "usernameLabel");
+            usernameLabel.Name = "usernameLabel";
+            // 
+            // passwordLabel
+            // 
+            resources.ApplyResources(passwordLabel, "passwordLabel");
+            passwordLabel.Name = "passwordLabel";
+            // 
+            // usernameTextBox
+            // 
+            resources.ApplyResources(usernameTextBox, "usernameTextBox");
+            usernameTextBox.Name = "usernameTextBox";
+            usernameTextBox.TextChanged += textBox_TextChanged;
+            // 
+            // passwordTextBox
+            // 
+            resources.ApplyResources(passwordTextBox, "passwordTextBox");
+            passwordTextBox.Name = "passwordTextBox";
+            passwordTextBox.TextChanged += textBox_TextChanged;
+            // 
+            // loginButton
+            // 
+            resources.ApplyResources(loginButton, "loginButton");
+            loginButton.Name = "loginButton";
+            loginButton.UseVisualStyleBackColor = true;
+            loginButton.Click += loginButton_Click;
+            // 
+            // errorLabel
+            // 
+            resources.ApplyResources(errorLabel, "errorLabel");
+            errorLabel.ForeColor = Color.Red;
+            errorLabel.Name = "errorLabel";
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            Controls.Add(errorLabel);
+            Controls.Add(loginButton);
+            Controls.Add(passwordTextBox);
+            Controls.Add(usernameTextBox);
+            Controls.Add(passwordLabel);
+            Controls.Add(usernameLabel);
             Name = "LoginForm";
-            Text = "LoginForm";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label usernameLabel;
+        private Label passwordLabel;
+        private TextBox usernameTextBox;
+        private TextBox passwordTextBox;
+        private Button loginButton;
+        private Label errorLabel;
     }
 }
