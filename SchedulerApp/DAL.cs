@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using SchedulerApp.Models;
+using SchedulerApp.Entities;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SchedulerApp
 {
@@ -63,6 +64,69 @@ namespace SchedulerApp
                 Debug.WriteLine(ex.ToString());
 
                 return nullUser;
+            }
+        }
+
+        public List<Customer> GetCustomers()
+        {
+            var customers = new List<Customer>();
+
+            using var connection = new MySqlConnection(_connectionString);
+
+            try
+            {
+                connection.Open();
+                var query = "SELECT * FROM customer";
+                using var command = new MySqlCommand(query, connection);
+                using var reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    customers.Add(new Customer()
+                    {
+                        customerId = reader.GetInt32("customerId"),
+                        customerName = reader.GetString("customerName"),
+                        addressId = reader.GetInt32("addressId"),
+                        active = reader.GetInt32("active"),
+                        createDate = reader.GetDateTime("createDate"),
+                        createdBy = reader.GetString("createdBy"),
+                        lastUpdate = reader.GetDateTime("lastUpdate"),
+                        lastUpdateBy = reader.GetString("lastUpdateBy"),
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+
+            return customers;
+        }
+
+        public void DeleteCustomer(int customerId)
+        {
+            using var connection = new MySqlConnection(_connectionString);
+
+            try
+            {
+                connection.Open();
+
+                var queries = new List<string>
+                {
+                    "DELETE FROM appointment WHERE customerId = @customerId",
+                    "DELETE FROM customer WHERE customerId = @customerId"
+                };
+
+                foreach (var query in queries)
+                {
+                    using var command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("customerId", customerId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
             }
         }
     }

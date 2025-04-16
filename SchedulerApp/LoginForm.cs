@@ -1,6 +1,3 @@
-using MySql.Data.MySqlClient;
-using System.Diagnostics;
-
 namespace SchedulerApp
 {
     public partial class LoginForm : Form
@@ -21,13 +18,19 @@ namespace SchedulerApp
         private void loginButton_Click(object sender, EventArgs e)
         {
             var user = dal.GetUser(usernameTextBox.Text, passwordTextBox.Text);
-            var isValid = user.userId > 0;
-            errorLabel.Visible = !isValid;
 
-            if (isValid)
+            if (user.userId > 0)
             {
-                // Open new form, passing in user to constructor
-                Debug.WriteLine("YOU IN BRO!");
+                // Successful login!
+                var form = new MainScreen(dal, user);
+
+                Hide();
+                form.Closed += (s, args) => Close();
+                form.Show();
+            }
+            else
+            {
+                errorLabel.Visible = true;
             }
         }
     }
