@@ -60,8 +60,16 @@ namespace SchedulerApp
 
             if (confirm == DialogResult.Yes)
             {
-                dal.customer.DeleteCustomer(customerId);
-                RefreshData();
+                try
+                {
+                    dal.customer.DeleteCustomer(customerId);
+                    RefreshData();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Delete failed with exception", ex);
+                    MessageBox.Show("Something went wrong, please try again!");
+                }
             }
         }
     }

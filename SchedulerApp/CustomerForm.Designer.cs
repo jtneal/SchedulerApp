@@ -93,11 +93,13 @@
             // 
             resources.ApplyResources(nameTextBox, "nameTextBox");
             nameTextBox.Name = "nameTextBox";
+            nameTextBox.TextChanged += Control_Changed;
             // 
             // addressLine1TextBox
             // 
             resources.ApplyResources(addressLine1TextBox, "addressLine1TextBox");
             addressLine1TextBox.Name = "addressLine1TextBox";
+            addressLine1TextBox.TextChanged += Control_Changed;
             // 
             // addressLine2TextBox
             // 
@@ -108,21 +110,25 @@
             // 
             resources.ApplyResources(phoneNumberTextBox, "phoneNumberTextBox");
             phoneNumberTextBox.Name = "phoneNumberTextBox";
+            phoneNumberTextBox.TextChanged += phoneNumberTextBox_TextChanged;
             // 
             // cityTextBox
             // 
             resources.ApplyResources(cityTextBox, "cityTextBox");
             cityTextBox.Name = "cityTextBox";
+            cityTextBox.TextChanged += Control_Changed;
             // 
             // postalCodeTextBox
             // 
             resources.ApplyResources(postalCodeTextBox, "postalCodeTextBox");
             postalCodeTextBox.Name = "postalCodeTextBox";
+            postalCodeTextBox.TextChanged += Control_Changed;
             // 
             // countryTextBox
             // 
             resources.ApplyResources(countryTextBox, "countryTextBox");
             countryTextBox.Name = "countryTextBox";
+            countryTextBox.TextChanged += Control_Changed;
             // 
             // saveButton
             // 

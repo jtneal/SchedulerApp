@@ -567,6 +567,9 @@
   <data name="&gt;&gt;countryTextBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="saveButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="saveButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>

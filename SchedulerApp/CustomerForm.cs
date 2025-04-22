@@ -21,6 +21,33 @@ namespace SchedulerApp
             this.user = user;
         }
 
+        private bool IsFormValid()
+        {
+            List<Control> requiredFields = [
+                nameTextBox,
+                phoneNumberTextBox,
+                addressLine1TextBox,
+                cityTextBox,
+                postalCodeTextBox,
+                countryTextBox,
+            ];
+
+            foreach (var field in requiredFields)
+            {
+                if (field.Text.Trim() == string.Empty)
+                {
+                    return false;
+                }
+            }
+
+            if (phoneNumberTextBox.Text != GetFormattedPhoneNumber(phoneNumberTextBox.Text))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         /***********************
          * Form Event Handlers *
          ***********************/
@@ -42,6 +69,11 @@ namespace SchedulerApp
             }
         }
 
+        protected void Control_Changed(object sender, EventArgs e)
+        {
+            saveButton.Enabled = IsFormValid();
+        }
+
         /*************************
          * Button Event Handlers *
          *************************/
@@ -53,105 +85,124 @@ namespace SchedulerApp
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            var country = dal.address.GetCountryByName(countryTextBox.Text);
-
-            if (country.countryId <= 0)
+            try
             {
-                country = new Country()
+                var country = dal.address.GetCountryByName(countryTextBox.Text);
+
+                if (country.countryId <= 0)
                 {
-                    country = countryTextBox.Text,
-                    createDate = DateTime.Now.Date,
-                    createdBy = user.userName,
-                    lastUpdate = DateTime.Now,
-                    lastUpdateBy = user.userName,
-                };
+                    country = new Country()
+                    {
+                        country = countryTextBox.Text,
+                        createDate = DateTime.Now.Date,
+                        createdBy = user.userName,
+                        lastUpdate = DateTime.Now,
+                        lastUpdateBy = user.userName,
+                    };
 
-                country.countryId = dal.address.CreateCountry(country);
+                    country.countryId = dal.address.CreateCountry(country);
+                }
+
+                var city = dal.address.GetCityByName(cityTextBox.Text);
+
+                if (city.cityId <= 0)
+                {
+                    city = new City()
+                    {
+                        city = cityTextBox.Text,
+                        countryId = country.countryId,
+                        createDate = DateTime.Now.Date,
+                        createdBy = user.userName,
+                        lastUpdate = DateTime.Now,
+                        lastUpdateBy = user.userName,
+                    };
+
+                    city.cityId = dal.address.CreateCity(city);
+                }
+
+                int addressId;
+
+                if (customer!.addressId > 0)
+                {
+                    dal.address.UpdateAddress(new Address()
+                    {
+                        addressId = customer.addressId,
+                        address = addressLine1TextBox.Text,
+                        address2 = addressLine2TextBox.Text,
+                        cityId = city.cityId,
+                        postalCode = postalCodeTextBox.Text,
+                        phone = phoneNumberTextBox.Text,
+                        createDate = DateTime.Now.Date,
+                        createdBy = user.userName,
+                        lastUpdate = DateTime.Now,
+                        lastUpdateBy = user.userName,
+                    });
+
+                    addressId = customer.addressId;
+                }
+                else
+                {
+                    addressId = dal.address.CreateAddress(new Address()
+                    {
+                        address = addressLine1TextBox.Text,
+                        address2 = addressLine2TextBox.Text,
+                        cityId = city.cityId,
+                        postalCode = postalCodeTextBox.Text,
+                        phone = phoneNumberTextBox.Text,
+                        createDate = DateTime.Now.Date,
+                        createdBy = user.userName,
+                        lastUpdate = DateTime.Now,
+                        lastUpdateBy = user.userName,
+                    });
+                }
+
+                if (customer.customerId > 0)
+                {
+                    dal.customer.UpdateCustomer(new Customer()
+                    {
+                        customerId = customer.customerId,
+                        customerName = nameTextBox.Text,
+                        addressId = addressId,
+                        active = activeCheckBox.Checked ? 1 : 0,
+                        createDate = DateTime.Now.Date,
+                        createdBy = user.userName,
+                        lastUpdate = DateTime.Now,
+                        lastUpdateBy = user.userName,
+                    });
+                }
+                else
+                {
+                    dal.customer.CreateCustomer(new Customer()
+                    {
+                        customerName = nameTextBox.Text,
+                        addressId = addressId,
+                        active = activeCheckBox.Checked ? 1 : 0,
+                        createDate = DateTime.Now.Date,
+                        createdBy = user.userName,
+                        lastUpdate = DateTime.Now,
+                        lastUpdateBy = user.userName,
+                    });
+                }
+
+                mainScreen.RefreshData();
+                Close();
             }
-
-            var city = dal.address.GetCityByName(cityTextBox.Text);
-
-            if (city.cityId <= 0)
+            catch(Exception ex)
             {
-                city = new City()
-                {
-                    city = cityTextBox.Text,
-                    countryId = country.countryId,
-                    createDate = DateTime.Now.Date,
-                    createdBy = user.userName,
-                    lastUpdate = DateTime.Now,
-                    lastUpdateBy = user.userName,
-                };
-
-                city.cityId = dal.address.CreateCity(city);
+                Console.WriteLine("Save failed with exception", ex);
+                MessageBox.Show("Something went wrong, please try again!");
             }
+        }
 
-            int addressId;
+        private void phoneNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            phoneNumberTextBox.Text = GetFormattedPhoneNumber(phoneNumberTextBox.Text);
+            Control_Changed(sender, e);
+        }
 
-            if (customer!.addressId > 0)
-            {
-                dal.address.UpdateAddress(new Address()
-                {
-                    addressId = customer.addressId,
-                    address = addressLine1TextBox.Text,
-                    address2 = addressLine2TextBox.Text,
-                    cityId = city.cityId,
-                    postalCode = postalCodeTextBox.Text,
-                    phone = phoneNumberTextBox.Text,
-                    createDate = DateTime.Now.Date,
-                    createdBy = user.userName,
-                    lastUpdate = DateTime.Now,
-                    lastUpdateBy = user.userName,
-                });
-
-                addressId = customer.addressId;
-            }
-            else
-            {
-                addressId = dal.address.CreateAddress(new Address()
-                {
-                    address = addressLine1TextBox.Text,
-                    address2 = addressLine2TextBox.Text,
-                    cityId = city.cityId,
-                    postalCode = postalCodeTextBox.Text,
-                    phone = phoneNumberTextBox.Text,
-                    createDate = DateTime.Now.Date,
-                    createdBy = user.userName,
-                    lastUpdate = DateTime.Now,
-                    lastUpdateBy = user.userName,
-                });
-            }
-
-            if (customer.customerId > 0)
-            {
-                dal.customer.UpdateCustomer(new Customer()
-                {
-                    customerId = customer.customerId,
-                    customerName = nameTextBox.Text,
-                    addressId = addressId,
-                    active = activeCheckBox.Checked ? 1 : 0,
-                    createDate = DateTime.Now.Date,
-                    createdBy = user.userName,
-                    lastUpdate = DateTime.Now,
-                    lastUpdateBy = user.userName,
-                });
-            }
-            else
-            {
-                dal.customer.CreateCustomer(new Customer()
-                {
-                    customerName = nameTextBox.Text,
-                    addressId = addressId,
-                    active = activeCheckBox.Checked ? 1 : 0,
-                    createDate = DateTime.Now.Date,
-                    createdBy = user.userName,
-                    lastUpdate = DateTime.Now,
-                    lastUpdateBy = user.userName,
-                });
-            }
-
-            mainScreen.RefreshData();
-            Close();
+        private string GetFormattedPhoneNumber(string phoneNumber)
+        {
+            return new string(phoneNumber.Where(c => "0123456789-".Contains(c)).ToArray());
         }
     }
 }
