@@ -1,13 +1,15 @@
+using SchedulerApp.DAL;
+
 namespace SchedulerApp
 {
     public partial class LoginForm : Form
     {
-        private readonly DAL dal;
+        private readonly CompositeDAL dal;
 
         public LoginForm()
         {
             InitializeComponent();
-            dal = new DAL();
+            dal = new CompositeDAL();
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
@@ -17,7 +19,7 @@ namespace SchedulerApp
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            var user = dal.GetUser(usernameTextBox.Text, passwordTextBox.Text);
+            var user = dal.user.GetUser(usernameTextBox.Text, passwordTextBox.Text);
 
             if (user.userId > 0)
             {

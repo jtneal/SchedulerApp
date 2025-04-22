@@ -2,9 +2,9 @@
 {
     public abstract class Entity
     {
-        public required DateTime createDate { get; set; }
-        public required string createdBy { get; set; }
-        public required DateTime lastUpdate { get; set; }
-        public required string lastUpdateBy { get; set; }
+        public DateTime createDate { get; set; }
+        public string createdBy { get; set; } = string.Empty;
+        public DateTime lastUpdate { get; set; }
+        public string lastUpdateBy { get; set; } = string.Empty;
     }
 }

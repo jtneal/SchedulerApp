@@ -67,6 +67,8 @@
             // 
             customersDataGridView.AllowUserToAddRows = false;
             customersDataGridView.AllowUserToDeleteRows = false;
+            customersDataGridView.AllowUserToResizeColumns = false;
+            customersDataGridView.AllowUserToResizeRows = false;
             customersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(customersDataGridView, "customersDataGridView");
             customersDataGridView.MultiSelect = false;
