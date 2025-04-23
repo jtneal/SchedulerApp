@@ -142,7 +142,6 @@
             resources.ApplyResources(cancelButton, "cancelButton");
             cancelButton.Name = "cancelButton";
             cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += cancelButton_Click;
             // 
             // CustomerForm
             // 

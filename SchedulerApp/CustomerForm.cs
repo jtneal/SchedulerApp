@@ -74,15 +74,6 @@ namespace SchedulerApp
             saveButton.Enabled = IsFormValid();
         }
 
-        /*************************
-         * Button Event Handlers *
-         *************************/
-
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             try
@@ -132,8 +123,6 @@ namespace SchedulerApp
                         cityId = city.cityId,
                         postalCode = postalCodeTextBox.Text,
                         phone = phoneNumberTextBox.Text,
-                        createDate = DateTime.Now.Date,
-                        createdBy = user.userName,
                         lastUpdate = DateTime.Now,
                         lastUpdateBy = user.userName,
                     });
@@ -164,8 +153,6 @@ namespace SchedulerApp
                         customerName = nameTextBox.Text,
                         addressId = addressId,
                         active = activeCheckBox.Checked ? 1 : 0,
-                        createDate = DateTime.Now.Date,
-                        createdBy = user.userName,
                         lastUpdate = DateTime.Now,
                         lastUpdateBy = user.userName,
                     });

@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;addCustomerButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="updateCustomerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -175,7 +175,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;updateCustomerButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="deleteCustomerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -205,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;deleteCustomerButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="customersLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -235,7 +235,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;customersLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="customersDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 52</value>
@@ -256,7 +256,151 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;customersDataGridView.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="appointmentsDataGridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>459, 52</value>
+  </data>
+  <data name="appointmentsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 197</value>
+  </data>
+  <data name="appointmentsDataGridView.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDataGridView.Name" xml:space="preserve">
+    <value>appointmentsDataGridView</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDataGridView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDataGridView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="appointmentsLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="appointmentsLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="appointmentsLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="appointmentsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 23</value>
+  </data>
+  <data name="appointmentsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 21</value>
+  </data>
+  <data name="appointmentsLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="appointmentsLabel.Text" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="&gt;&gt;appointmentsLabel.Name" xml:space="preserve">
+    <value>appointmentsLabel</value>
+  </data>
+  <data name="&gt;&gt;appointmentsLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;appointmentsLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;appointmentsLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="appointmentsDeleteButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="appointmentsDeleteButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="appointmentsDeleteButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>788, 260</value>
+  </data>
+  <data name="appointmentsDeleteButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 44</value>
+  </data>
+  <data name="appointmentsDeleteButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="appointmentsDeleteButton.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDeleteButton.Name" xml:space="preserve">
+    <value>appointmentsDeleteButton</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDeleteButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDeleteButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;appointmentsDeleteButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="appointmentsUpdateButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="appointmentsUpdateButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="appointmentsUpdateButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>702, 260</value>
+  </data>
+  <data name="appointmentsUpdateButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 44</value>
+  </data>
+  <data name="appointmentsUpdateButton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="appointmentsUpdateButton.Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="&gt;&gt;appointmentsUpdateButton.Name" xml:space="preserve">
+    <value>appointmentsUpdateButton</value>
+  </data>
+  <data name="&gt;&gt;appointmentsUpdateButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;appointmentsUpdateButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;appointmentsUpdateButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="appointmentsAddButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="appointmentsAddButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="appointmentsAddButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>616, 260</value>
+  </data>
+  <data name="appointmentsAddButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 44</value>
+  </data>
+  <data name="appointmentsAddButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="appointmentsAddButton.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;appointmentsAddButton.Name" xml:space="preserve">
+    <value>appointmentsAddButton</value>
+  </data>
+  <data name="&gt;&gt;appointmentsAddButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;appointmentsAddButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;appointmentsAddButton.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -265,7 +409,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1027, 591</value>
+    <value>892, 591</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Scheduler</value>

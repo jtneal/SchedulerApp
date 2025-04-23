@@ -34,7 +34,13 @@
             deleteCustomerButton = new Button();
             customersLabel = new Label();
             customersDataGridView = new DataGridView();
+            appointmentsDataGridView = new DataGridView();
+            appointmentsLabel = new Label();
+            appointmentsDeleteButton = new Button();
+            appointmentsUpdateButton = new Button();
+            appointmentsAddButton = new Button();
             ((System.ComponentModel.ISupportInitialize)customersDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)appointmentsDataGridView).BeginInit();
             SuspendLayout();
             // 
             // addCustomerButton
@@ -77,10 +83,55 @@
             customersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             customersDataGridView.ShowEditingIcon = false;
             // 
+            // appointmentsDataGridView
+            // 
+            appointmentsDataGridView.AllowUserToAddRows = false;
+            appointmentsDataGridView.AllowUserToDeleteRows = false;
+            appointmentsDataGridView.AllowUserToResizeColumns = false;
+            appointmentsDataGridView.AllowUserToResizeRows = false;
+            appointmentsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(appointmentsDataGridView, "appointmentsDataGridView");
+            appointmentsDataGridView.MultiSelect = false;
+            appointmentsDataGridView.Name = "appointmentsDataGridView";
+            appointmentsDataGridView.RowHeadersVisible = false;
+            appointmentsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            appointmentsDataGridView.ShowEditingIcon = false;
+            // 
+            // appointmentsLabel
+            // 
+            resources.ApplyResources(appointmentsLabel, "appointmentsLabel");
+            appointmentsLabel.Name = "appointmentsLabel";
+            // 
+            // appointmentsDeleteButton
+            // 
+            resources.ApplyResources(appointmentsDeleteButton, "appointmentsDeleteButton");
+            appointmentsDeleteButton.Name = "appointmentsDeleteButton";
+            appointmentsDeleteButton.UseVisualStyleBackColor = true;
+            appointmentsDeleteButton.Click += appointmentsDeleteButton_Click;
+            // 
+            // appointmentsUpdateButton
+            // 
+            resources.ApplyResources(appointmentsUpdateButton, "appointmentsUpdateButton");
+            appointmentsUpdateButton.Name = "appointmentsUpdateButton";
+            appointmentsUpdateButton.UseVisualStyleBackColor = true;
+            appointmentsUpdateButton.Click += appointmentsUpdateButton_Click;
+            // 
+            // appointmentsAddButton
+            // 
+            resources.ApplyResources(appointmentsAddButton, "appointmentsAddButton");
+            appointmentsAddButton.Name = "appointmentsAddButton";
+            appointmentsAddButton.UseVisualStyleBackColor = true;
+            appointmentsAddButton.Click += appointmentsAddButton_Click;
+            // 
             // MainScreen
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(appointmentsDataGridView);
+            Controls.Add(appointmentsLabel);
+            Controls.Add(appointmentsDeleteButton);
+            Controls.Add(appointmentsUpdateButton);
+            Controls.Add(appointmentsAddButton);
             Controls.Add(customersDataGridView);
             Controls.Add(customersLabel);
             Controls.Add(deleteCustomerButton);
@@ -89,6 +140,7 @@
             Name = "MainScreen";
             Load += MainScreen_Load;
             ((System.ComponentModel.ISupportInitialize)customersDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)appointmentsDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -100,5 +152,10 @@
         private Button deleteCustomerButton;
         private Label customersLabel;
         private DataGridView customersDataGridView;
+        private DataGridView appointmentsDataGridView;
+        private Label appointmentsLabel;
+        private Button appointmentsDeleteButton;
+        private Button appointmentsUpdateButton;
+        private Button appointmentsAddButton;
     }
 }

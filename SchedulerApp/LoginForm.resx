@@ -183,7 +183,7 @@
     <value>334, 29</value>
   </data>
   <data name="usernameTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;usernameTextBox.Name" xml:space="preserve">
     <value>usernameTextBox</value>
@@ -234,7 +234,7 @@
     <value>75, 44</value>
   </data>
   <data name="loginButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="loginButton.Text" xml:space="preserve">
     <value>Login</value>
