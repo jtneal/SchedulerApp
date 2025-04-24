@@ -39,6 +39,13 @@
             appointmentsDeleteButton = new Button();
             appointmentsUpdateButton = new Button();
             appointmentsAddButton = new Button();
+            calendarTable = new TableLayoutPanel();
+            calendarLabel = new Label();
+            monthYearLabel = new Label();
+            nextYear = new Button();
+            nextMonth = new Button();
+            prevYear = new Button();
+            prevMonth = new Button();
             ((System.ComponentModel.ISupportInitialize)customersDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)appointmentsDataGridView).BeginInit();
             SuspendLayout();
@@ -123,10 +130,60 @@
             appointmentsAddButton.UseVisualStyleBackColor = true;
             appointmentsAddButton.Click += appointmentsAddButton_Click;
             // 
+            // calendarTable
+            // 
+            resources.ApplyResources(calendarTable, "calendarTable");
+            calendarTable.Name = "calendarTable";
+            // 
+            // calendarLabel
+            // 
+            resources.ApplyResources(calendarLabel, "calendarLabel");
+            calendarLabel.Name = "calendarLabel";
+            // 
+            // monthYearLabel
+            // 
+            resources.ApplyResources(monthYearLabel, "monthYearLabel");
+            monthYearLabel.Name = "monthYearLabel";
+            // 
+            // nextYear
+            // 
+            resources.ApplyResources(nextYear, "nextYear");
+            nextYear.Name = "nextYear";
+            nextYear.UseVisualStyleBackColor = true;
+            nextYear.Click += nextYear_Click;
+            // 
+            // nextMonth
+            // 
+            resources.ApplyResources(nextMonth, "nextMonth");
+            nextMonth.Name = "nextMonth";
+            nextMonth.UseVisualStyleBackColor = true;
+            nextMonth.Click += nextMonth_Click;
+            // 
+            // prevYear
+            // 
+            resources.ApplyResources(prevYear, "prevYear");
+            prevYear.Name = "prevYear";
+            prevYear.UseVisualStyleBackColor = true;
+            prevYear.Click += prevYear_Click;
+            // 
+            // prevMonth
+            // 
+            resources.ApplyResources(prevMonth, "prevMonth");
+            prevMonth.Name = "prevMonth";
+            prevMonth.UseVisualStyleBackColor = true;
+            prevMonth.Click += prevMonth_Click;
+            // 
             // MainScreen
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(prevYear);
+            Controls.Add(prevMonth);
+            Controls.Add(nextMonth);
+            Controls.Add(nextYear);
+            Controls.Add(monthYearLabel);
+            Controls.Add(calendarLabel);
+            Controls.Add(calendarTable);
             Controls.Add(appointmentsDataGridView);
             Controls.Add(appointmentsLabel);
             Controls.Add(appointmentsDeleteButton);
@@ -157,5 +214,12 @@
         private Button appointmentsDeleteButton;
         private Button appointmentsUpdateButton;
         private Button appointmentsAddButton;
+        private TableLayoutPanel calendarTable;
+        private Label calendarLabel;
+        private Label monthYearLabel;
+        private Button nextYear;
+        private Button nextMonth;
+        private Button prevYear;
+        private Button prevMonth;
     }
 }

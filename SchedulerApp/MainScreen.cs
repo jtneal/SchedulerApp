@@ -8,6 +8,8 @@ namespace SchedulerApp
     {
         private readonly CompositeDAL dal;
         private readonly User user;
+        private int year = DateTime.Now.Year;
+        private int month = DateTime.Now.Month;
 
         public MainScreen(CompositeDAL dal, User user)
         {
@@ -26,6 +28,54 @@ namespace SchedulerApp
             appointmentsDataGridView.Columns["location"].Visible = false;
             appointmentsDataGridView.Columns["contact"].Visible = false;
             appointmentsDataGridView.Columns["url"].Visible = false;
+
+            SetupCalendar();
+        }
+
+        public void SetupCalendar()
+        {
+            calendarTable.Visible = false;
+            calendarTable.Controls.Clear();
+
+            var firstOfMonth = new DateTime(year, month, 1);
+            var daysInMonth = DateTime.DaysInMonth(year, month);
+            var row = 0;
+            var col = ((int)firstOfMonth.DayOfWeek) - 1;
+            var day = 1;
+
+            monthYearLabel.Text = $"{firstOfMonth:MMMM} {firstOfMonth:yyyy}";
+
+            if (firstOfMonth.DayOfWeek == DayOfWeek.Saturday)
+            {
+                col = 0;
+                day += 2;
+            }
+            else if (firstOfMonth.DayOfWeek == DayOfWeek.Sunday)
+            {
+                col = 0;
+                day++;
+            }
+
+            while (day <= daysInMonth)
+            {
+                var label = new Label() { Text = day.ToString() };
+
+                calendarTable.Controls.Add(label, col, row);
+
+                if (col < 4)
+                {
+                    col++;
+                    day++;
+                }
+                else
+                {
+                    col = 0;
+                    row++;
+                    day += 3; // Skip the weekend
+                }
+            }
+
+            calendarTable.Visible = true;
         }
 
         /***********************
@@ -114,6 +164,48 @@ namespace SchedulerApp
                     MessageBox.Show("Something went wrong, please try again!");
                 }
             }
+        }
+
+        private void prevYear_Click(object sender, EventArgs e)
+        {
+            year--;
+            SetupCalendar();
+        }
+
+        private void prevMonth_Click(object sender, EventArgs e)
+        {
+            if (month > 1)
+            {
+                month--;
+            }
+            else
+            {
+                month = 12;
+                year--;
+            }
+
+            SetupCalendar();
+        }
+
+        private void nextMonth_Click(object sender, EventArgs e)
+        {
+            if (month < 12)
+            {
+                month++;
+            }
+            else
+            {
+                month = 1;
+                year++;
+            }
+
+            SetupCalendar();
+        }
+
+        private void nextYear_Click(object sender, EventArgs e)
+        {
+            year++;
+            SetupCalendar();
         }
     }
 }

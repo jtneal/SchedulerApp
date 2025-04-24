@@ -144,7 +144,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;addCustomerButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>16</value>
   </data>
   <data name="updateCustomerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -175,7 +175,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;updateCustomerButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>15</value>
   </data>
   <data name="deleteCustomerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -205,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;deleteCustomerButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>14</value>
   </data>
   <data name="customersLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -235,7 +235,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;customersLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>13</value>
   </data>
   <data name="customersDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 52</value>
@@ -256,7 +256,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;customersDataGridView.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>12</value>
   </data>
   <data name="appointmentsDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>459, 52</value>
@@ -277,7 +277,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;appointmentsDataGridView.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>7</value>
   </data>
   <data name="appointmentsLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -310,7 +310,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;appointmentsLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="appointmentsDeleteButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -340,7 +340,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;appointmentsDeleteButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>9</value>
   </data>
   <data name="appointmentsUpdateButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -370,7 +370,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;appointmentsUpdateButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>10</value>
   </data>
   <data name="appointmentsAddButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -400,7 +400,220 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;appointmentsAddButton.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="calendarTable.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+    <value>Single</value>
+  </data>
+  <data name="calendarTable.ColumnCount" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="calendarTable.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="calendarTable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 358</value>
+  </data>
+  <data name="calendarTable.RowCount" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="calendarTable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>834, 533</value>
+  </data>
+  <data name="calendarTable.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;calendarTable.Name" xml:space="preserve">
+    <value>calendarTable</value>
+  </data>
+  <data name="&gt;&gt;calendarTable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;calendarTable.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;calendarTable.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="calendarTable.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="calendarLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="calendarLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="calendarLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="calendarLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 328</value>
+  </data>
+  <data name="calendarLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 21</value>
+  </data>
+  <data name="calendarLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="calendarLabel.Text" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="&gt;&gt;calendarLabel.Name" xml:space="preserve">
+    <value>calendarLabel</value>
+  </data>
+  <data name="&gt;&gt;calendarLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;calendarLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;calendarLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="monthYearLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="monthYearLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="monthYearLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>403, 328</value>
+  </data>
+  <data name="monthYearLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 21</value>
+  </data>
+  <data name="monthYearLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="monthYearLabel.Text" xml:space="preserve">
+    <value>Month Year</value>
+  </data>
+  <data name="&gt;&gt;monthYearLabel.Name" xml:space="preserve">
+    <value>monthYearLabel</value>
+  </data>
+  <data name="&gt;&gt;monthYearLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;monthYearLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;monthYearLabel.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="nextYear.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="nextYear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>833, 315</value>
+  </data>
+  <data name="nextYear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 30</value>
+  </data>
+  <data name="nextYear.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="nextYear.Text" xml:space="preserve">
+    <value>»</value>
+  </data>
+  <data name="&gt;&gt;nextYear.Name" xml:space="preserve">
+    <value>nextYear</value>
+  </data>
+  <data name="&gt;&gt;nextYear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nextYear.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;nextYear.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="nextMonth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="nextMonth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>798, 315</value>
+  </data>
+  <data name="nextMonth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 30</value>
+  </data>
+  <data name="nextMonth.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="nextMonth.Text" xml:space="preserve">
+    <value>›</value>
+  </data>
+  <data name="&gt;&gt;nextMonth.Name" xml:space="preserve">
+    <value>nextMonth</value>
+  </data>
+  <data name="&gt;&gt;nextMonth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nextMonth.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;nextMonth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="prevYear.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="prevYear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="prevYear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>728, 315</value>
+  </data>
+  <data name="prevYear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 30</value>
+  </data>
+  <data name="prevYear.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="prevYear.Text" xml:space="preserve">
+    <value>«</value>
+  </data>
+  <data name="&gt;&gt;prevYear.Name" xml:space="preserve">
+    <value>prevYear</value>
+  </data>
+  <data name="&gt;&gt;prevYear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prevYear.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;prevYear.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="prevMonth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="prevMonth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="prevMonth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>763, 315</value>
+  </data>
+  <data name="prevMonth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 30</value>
+  </data>
+  <data name="prevMonth.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="prevMonth.Text" xml:space="preserve">
+    <value>‹</value>
+  </data>
+  <data name="&gt;&gt;prevMonth.Name" xml:space="preserve">
+    <value>prevMonth</value>
+  </data>
+  <data name="&gt;&gt;prevMonth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prevMonth.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;prevMonth.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -409,7 +622,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>892, 591</value>
+    <value>892, 913</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Scheduler</value>
