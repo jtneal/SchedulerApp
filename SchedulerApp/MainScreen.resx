@@ -475,13 +475,13 @@
     <value>True</value>
   </data>
   <data name="monthYearLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 12pt</value>
+    <value>Segoe UI, 14pt, style=Bold</value>
   </data>
   <data name="monthYearLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>403, 328</value>
+    <value>391, 324</value>
   </data>
   <data name="monthYearLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 21</value>
+    <value>115, 25</value>
   </data>
   <data name="monthYearLabel.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -622,7 +622,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>892, 913</value>
+    <value>892, 921</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Scheduler</value>

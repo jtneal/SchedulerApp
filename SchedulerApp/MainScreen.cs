@@ -43,8 +43,6 @@ namespace SchedulerApp
             var col = ((int)firstOfMonth.DayOfWeek) - 1;
             var day = 1;
 
-            monthYearLabel.Text = $"{firstOfMonth:MMMM} {firstOfMonth:yyyy}";
-
             if (firstOfMonth.DayOfWeek == DayOfWeek.Saturday)
             {
                 col = 0;
@@ -61,6 +59,10 @@ namespace SchedulerApp
                 var label = new Label() { Text = day.ToString() };
 
                 calendarTable.Controls.Add(label, col, row);
+                // Add any events on this day as well.
+                // We could do a sql query for each day, but that's probably too much
+                // One query per month is better during setup right.
+                // Check the docs maybe there's advice on this step
 
                 if (col < 4)
                 {
@@ -75,6 +77,7 @@ namespace SchedulerApp
                 }
             }
 
+            monthYearLabel.Text = $"{firstOfMonth:MMMM} {firstOfMonth:yyyy}";
             calendarTable.Visible = true;
         }
 
