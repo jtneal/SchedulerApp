@@ -93,6 +93,39 @@ namespace SchedulerApp.DAL
             }
         }
 
+        public List<AppointmentModel> GetAppointmentsByDate(string date)
+        {
+            var appointments = new List<AppointmentModel>();
+
+            using var connection = new MySqlConnection(_connectionString);
+
+            try
+            {
+                connection.Open();
+                var query = "SELECT c.customerName, a.type, a.start, a.end FROM appointment a, customer c WHERE a.customerId = c.customerId AND DATE(a.start) = @date ORDER BY start ASC";
+                using var command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("date", date);
+                using var reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    appointments.Add(new AppointmentModel()
+                    {
+                        customerName = reader.GetString("customerName"),
+                        type = reader.GetString("type"),
+                        start = reader.GetDateTime("start"),
+                        end = reader.GetDateTime("end"),
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+
+            return appointments;
+        }
+
         public List<Appointment> GetAppointments()
         {
             var appointments = new List<Appointment>();

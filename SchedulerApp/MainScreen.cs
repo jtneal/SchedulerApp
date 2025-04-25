@@ -1,6 +1,7 @@
 ﻿using SchedulerApp.DAL;
 using SchedulerApp.Entities;
 using SchedulerApp.Utilities;
+using System.Windows.Forms;
 
 namespace SchedulerApp
 {
@@ -56,13 +57,15 @@ namespace SchedulerApp
 
             while (day <= daysInMonth)
             {
-                var label = new Label() { Text = day.ToString() };
+                var label = new Label
+                {
+                    Text = day.ToString(),
+                    Height = 100,
+                    Width = 200
+                };
 
+                label.MouseClick += new MouseEventHandler(calendarTable_Click!);
                 calendarTable.Controls.Add(label, col, row);
-                // Add any events on this day as well.
-                // We could do a sql query for each day, but that's probably too much
-                // One query per month is better during setup right.
-                // Check the docs maybe there's advice on this step
 
                 if (col < 4)
                 {
@@ -79,6 +82,17 @@ namespace SchedulerApp
 
             monthYearLabel.Text = $"{firstOfMonth:MMMM} {firstOfMonth:yyyy}";
             calendarTable.Visible = true;
+        }
+
+        private void calendarTable_Click(object sender, EventArgs e)
+        {
+            var day = ((Control)sender).Text;
+            var date = $"{year}-{month}-{day}";
+            var dt = new DateTime(year, month, int.Parse(day));
+            var appointments = dal.appointment.GetAppointmentsByDate(date);
+            var dialog = new CalendarDateDialog($"{dt:M}, {dt:yyyy}", appointments.ToArray());
+
+            dialog.ShowDialog();
         }
 
         /***********************
@@ -168,6 +182,10 @@ namespace SchedulerApp
                 }
             }
         }
+
+        /***********************
+         * Calendar Event Handlers *
+         ***********************/
 
         private void prevYear_Click(object sender, EventArgs e)
         {
