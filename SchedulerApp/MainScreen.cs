@@ -1,7 +1,7 @@
 ﻿using SchedulerApp.DAL;
 using SchedulerApp.Entities;
 using SchedulerApp.Utilities;
-using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SchedulerApp
 {
@@ -18,6 +18,25 @@ namespace SchedulerApp
 
             this.dal = dal;
             this.user = user;
+        }
+
+        public void AppointmentAlerts()
+        {
+            var upcoming = dal.appointment.GetUpcomingAppointment();
+
+            Debug.WriteLine("AppointmentAlerts");
+            Debug.WriteLine(upcoming.customerName);
+            Debug.WriteLine(upcoming.type);
+            Debug.WriteLine(upcoming.start);
+            Debug.WriteLine(upcoming.end);
+
+            if (upcoming.customerName != string.Empty)
+            {
+                MessageBox.Show(
+                    $"You have an upcoming appointment:\n\nType: {upcoming.type}\nCustomer: {upcoming.customerName}\nTime: {upcoming.start:t} to {upcoming.end:t}",
+                    "Upcoming Appointment"
+                );
+            }
         }
 
         public void RefreshData()
@@ -101,6 +120,7 @@ namespace SchedulerApp
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
+            AppointmentAlerts();
             RefreshData();
         }
 

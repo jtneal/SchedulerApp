@@ -2,6 +2,7 @@
 using SchedulerApp.Entities;
 using SchedulerApp.Models;
 using System.Diagnostics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SchedulerApp.DAL
 {
@@ -41,8 +42,8 @@ namespace SchedulerApp.DAL
                         customerId = reader.GetInt32("customerId"),
                         userId = reader.GetInt32("userId"),
                         type = reader.GetString("type"),
-                        start = reader.GetDateTime("start"),
-                        end = reader.GetDateTime("end"),
+                        start = reader.GetDateTime("start").ToLocalTime(),
+                        end = reader.GetDateTime("end").ToLocalTime(),
                         createDate = reader.GetDateTime("createDate"),
                         createdBy = reader.GetString("createdBy"),
                         lastUpdate = reader.GetDateTime("lastUpdate"),
@@ -113,8 +114,8 @@ namespace SchedulerApp.DAL
                     {
                         customerName = reader.GetString("customerName"),
                         type = reader.GetString("type"),
-                        start = reader.GetDateTime("start"),
-                        end = reader.GetDateTime("end"),
+                        start = reader.GetDateTime("start").ToLocalTime(),
+                        end = reader.GetDateTime("end").ToLocalTime(),
                     });
                 }
             }
@@ -124,6 +125,43 @@ namespace SchedulerApp.DAL
             }
 
             return appointments;
+        }
+
+        public AppointmentModel GetUpcomingAppointment()
+        {
+            var appointment = new AppointmentModel()
+            {
+                customerName = string.Empty,
+                type = string.Empty,
+                start = DateTime.MinValue,
+                end = DateTime.MinValue,
+            };
+
+            using var connection = new MySqlConnection(_connectionString);
+
+            try
+            {
+                connection.Open();
+                var query = "SELECT c.customerName, a.type, a.start, a.end FROM appointment a, customer c WHERE a.customerId = c.customerId AND a.start > @start AND a.start < @end LIMIT 1";
+                using var command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("start", DateTime.Now.ToUniversalTime());
+                command.Parameters.AddWithValue("end", DateTime.Now.AddMinutes(15).ToUniversalTime());
+                using var reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    appointment.customerName = reader.GetString("customerName");
+                    appointment.type = reader.GetString("type");
+                    appointment.start = reader.GetDateTime("start").ToLocalTime();
+                    appointment.end = reader.GetDateTime("end").ToLocalTime();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+
+            return appointment;
         }
 
         public List<Appointment> GetAppointments()
@@ -147,8 +185,8 @@ namespace SchedulerApp.DAL
                         customerId = reader.GetInt32("customerId"),
                         userId = reader.GetInt32("userId"),
                         type = reader.GetString("type"),
-                        start = reader.GetDateTime("start"),
-                        end = reader.GetDateTime("end"),
+                        start = reader.GetDateTime("start").ToLocalTime(),
+                        end = reader.GetDateTime("end").ToLocalTime(),
                         createDate = reader.GetDateTime("createDate"),
                         createdBy = reader.GetString("createdBy"),
                         lastUpdate = reader.GetDateTime("lastUpdate"),

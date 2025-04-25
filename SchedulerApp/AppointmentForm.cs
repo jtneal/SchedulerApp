@@ -1,6 +1,8 @@
 ﻿using SchedulerApp.DAL;
 using SchedulerApp.Entities;
+using System;
 using System.Diagnostics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SchedulerApp
 {
@@ -75,6 +77,7 @@ namespace SchedulerApp
 
         protected static bool IsBusinessHours(DateTime dateTime)
         {
+            return true;
             return dateTime.Hour >= 9 && (dateTime.Hour <= 16 || (dateTime.Hour == 17 && dateTime.Minute == 0 && dateTime.Second == 0));
         }
 
@@ -133,8 +136,8 @@ namespace SchedulerApp
                             customerId = (int)customerComboBox.SelectedValue!,
                             userId = user.userId,
                             type = typeTextBox.Text,
-                            start = startDateTimePicker.Value,
-                            end = endDateTimePicker.Value,
+                            start = startDateTimePicker.Value.ToUniversalTime(),
+                            end = endDateTimePicker.Value.ToUniversalTime(),
                             lastUpdate = DateTime.Now,
                             lastUpdateBy = user.userName,
                         });
@@ -146,8 +149,8 @@ namespace SchedulerApp
                             customerId = (int)customerComboBox.SelectedValue!,
                             userId = user.userId,
                             type = typeTextBox.Text,
-                            start = startDateTimePicker.Value,
-                            end = endDateTimePicker.Value,
+                            start = startDateTimePicker.Value.ToUniversalTime(),
+                            end = endDateTimePicker.Value.ToUniversalTime(),
                             createDate = DateTime.Now.Date,
                             createdBy = user.userName,
                             lastUpdate = DateTime.Now,

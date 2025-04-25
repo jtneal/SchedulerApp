@@ -1,4 +1,10 @@
+using Google.Protobuf.WellKnownTypes;
+using MySql.Data.MySqlClient;
 using SchedulerApp.DAL;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 namespace SchedulerApp
 {
@@ -24,6 +30,10 @@ namespace SchedulerApp
             if (user.userId > 0)
             {
                 // Successful login!
+                using var sw = File.AppendText(@"..\..\..\Login_History.txt");
+
+                sw.WriteLine($"{DateTimeOffset.Now.ToUnixTimeSeconds()}\t{user.userName}");
+
                 var form = new MainScreen(dal, user);
 
                 Hide();
