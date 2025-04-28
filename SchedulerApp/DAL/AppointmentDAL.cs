@@ -2,7 +2,6 @@
 using SchedulerApp.Entities;
 using SchedulerApp.Models;
 using System.Diagnostics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SchedulerApp.DAL
 {

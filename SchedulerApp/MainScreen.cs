@@ -248,5 +248,26 @@ namespace SchedulerApp
             year++;
             SetupCalendar();
         }
+
+        private void report1Button_Click(object sender, EventArgs e)
+        {
+            var form = new ReportDialog(dal, 1);
+
+            form.ShowDialog();
+        }
+
+        private void report2Button_Click(object sender, EventArgs e)
+        {
+            var form = new ReportDialog(dal, 2);
+
+            form.ShowDialog();
+        }
+
+        private void report3Button_Click(object sender, EventArgs e)
+        {
+            var form = new ReportDialog(dal, 3);
+
+            form.ShowDialog();
+        }
     }
 }

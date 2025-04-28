@@ -46,6 +46,10 @@
             nextMonth = new Button();
             prevYear = new Button();
             prevMonth = new Button();
+            report1Button = new Button();
+            report2Button = new Button();
+            report3Button = new Button();
+            reportsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)customersDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)appointmentsDataGridView).BeginInit();
             SuspendLayout();
@@ -173,10 +177,40 @@
             prevMonth.UseVisualStyleBackColor = true;
             prevMonth.Click += prevMonth_Click;
             // 
+            // report1Button
+            // 
+            resources.ApplyResources(report1Button, "report1Button");
+            report1Button.Name = "report1Button";
+            report1Button.UseVisualStyleBackColor = true;
+            report1Button.Click += report1Button_Click;
+            // 
+            // report2Button
+            // 
+            resources.ApplyResources(report2Button, "report2Button");
+            report2Button.Name = "report2Button";
+            report2Button.UseVisualStyleBackColor = true;
+            report2Button.Click += report2Button_Click;
+            // 
+            // report3Button
+            // 
+            resources.ApplyResources(report3Button, "report3Button");
+            report3Button.Name = "report3Button";
+            report3Button.UseVisualStyleBackColor = true;
+            report3Button.Click += report3Button_Click;
+            // 
+            // reportsLabel
+            // 
+            resources.ApplyResources(reportsLabel, "reportsLabel");
+            reportsLabel.Name = "reportsLabel";
+            // 
             // MainScreen
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(reportsLabel);
+            Controls.Add(report3Button);
+            Controls.Add(report2Button);
+            Controls.Add(report1Button);
             Controls.Add(prevYear);
             Controls.Add(prevMonth);
             Controls.Add(nextMonth);
@@ -221,5 +255,9 @@
         private Button nextMonth;
         private Button prevYear;
         private Button prevMonth;
+        private Button report1Button;
+        private Button report2Button;
+        private Button report3Button;
+        private Label reportsLabel;
     }
 }
