@@ -102,15 +102,13 @@ namespace SchedulerApp.DAL
             {
                 connection.Open();
 
-                var query = "UPDATE address SET address = @address, address2 = @address2, cityId = @cityId, postalCode = @postalCode, phone = @phone, createDate = @createDate, createdBy = @createdBy, lastUpdate = @lastUpdate, lastUpdateBy = @lastUpdateBy WHERE addressId = @addressId";
+                var query = "UPDATE address SET address = @address, address2 = @address2, cityId = @cityId, postalCode = @postalCode, phone = @phone, lastUpdate = @lastUpdate, lastUpdateBy = @lastUpdateBy WHERE addressId = @addressId";
                 using var command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("address", address.address);
                 command.Parameters.AddWithValue("address2", address.address2);
                 command.Parameters.AddWithValue("cityId", address.cityId);
                 command.Parameters.AddWithValue("postalCode", address.postalCode);
                 command.Parameters.AddWithValue("phone", address.phone);
-                command.Parameters.AddWithValue("createDate", address.createDate);
-                command.Parameters.AddWithValue("createdBy", address.createdBy);
                 command.Parameters.AddWithValue("lastUpdate", address.lastUpdate);
                 command.Parameters.AddWithValue("lastUpdateBy", address.lastUpdateBy);
                 command.Parameters.AddWithValue("addressId", address.addressId);

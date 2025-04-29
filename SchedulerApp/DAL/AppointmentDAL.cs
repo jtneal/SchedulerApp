@@ -303,7 +303,7 @@ namespace SchedulerApp.DAL
             {
                 connection.Open();
 
-                var query = "UPDATE appointment SET customerId = @customerId, userId = @userId, title = @title, description = @description, location = @location, contact = @contact, type = @type, url = @url, start = @start, end = @end, createDate = @createDate, createdBy = @createdBy, lastUpdate = @lastUpdate, lastUpdateBy = @lastUpdateBy WHERE appointmentId = @appointmentId";
+                var query = "UPDATE appointment SET customerId = @customerId, userId = @userId, title = @title, description = @description, location = @location, contact = @contact, type = @type, url = @url, start = @start, end = @end, lastUpdate = @lastUpdate, lastUpdateBy = @lastUpdateBy WHERE appointmentId = @appointmentId";
                 using var command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("customerId", appointment.customerId);
                 command.Parameters.AddWithValue("userId", appointment.userId);
@@ -315,8 +315,6 @@ namespace SchedulerApp.DAL
                 command.Parameters.AddWithValue("url", "not needed");
                 command.Parameters.AddWithValue("start", appointment.start);
                 command.Parameters.AddWithValue("end", appointment.end);
-                command.Parameters.AddWithValue("createDate", appointment.createDate);
-                command.Parameters.AddWithValue("createdBy", appointment.createdBy);
                 command.Parameters.AddWithValue("lastUpdate", appointment.lastUpdate);
                 command.Parameters.AddWithValue("lastUpdateBy", appointment.lastUpdateBy);
                 command.Parameters.AddWithValue("appointmentId", appointment.appointmentId);

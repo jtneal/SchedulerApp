@@ -9,8 +9,8 @@
 
         public CompositeDAL()
         {
-            var connectionString = "server=localhost;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!";
-            //var connectionString = "server=localhost;user=root;database=client_schedule;port=3306;password=root";
+            //var connectionString = "server=localhost;user=sqlUser;database=client_schedule;port=3306;password=Passw0rd!";
+            var connectionString = "server=localhost;user=root;database=client_schedule;port=3306;password=root";
 
             address = new AddressDAL(connectionString);
             appointment = new AppointmentDAL(connectionString);

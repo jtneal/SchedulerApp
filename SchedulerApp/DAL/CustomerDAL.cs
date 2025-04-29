@@ -180,13 +180,11 @@ namespace SchedulerApp.DAL
             {
                 connection.Open();
 
-                var query = "UPDATE customer SET customerName = @customerName, addressId = @addressId, active = @active, createDate = @createDate, createdBy = @createdBy, lastUpdate = @lastUpdate, lastUpdateBy = @lastUpdateBy WHERE customerId = @customerId";
+                var query = "UPDATE customer SET customerName = @customerName, addressId = @addressId, active = @active, lastUpdate = @lastUpdate, lastUpdateBy = @lastUpdateBy WHERE customerId = @customerId";
                 using var command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("customerName", customer.customerName);
                 command.Parameters.AddWithValue("addressId", customer.addressId);
                 command.Parameters.AddWithValue("active", customer.active);
-                command.Parameters.AddWithValue("createDate", customer.createDate);
-                command.Parameters.AddWithValue("createdBy", customer.createdBy);
                 command.Parameters.AddWithValue("lastUpdate", customer.lastUpdate);
                 command.Parameters.AddWithValue("lastUpdateBy", customer.lastUpdateBy);
                 command.Parameters.AddWithValue("customerId", customer.customerId);
