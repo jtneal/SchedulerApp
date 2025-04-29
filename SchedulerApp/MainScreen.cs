@@ -24,12 +24,6 @@ namespace SchedulerApp
         {
             var upcoming = dal.appointment.GetUpcomingAppointment();
 
-            Debug.WriteLine("AppointmentAlerts");
-            Debug.WriteLine(upcoming.customerName);
-            Debug.WriteLine(upcoming.type);
-            Debug.WriteLine(upcoming.start);
-            Debug.WriteLine(upcoming.end);
-
             if (upcoming.customerName != string.Empty)
             {
                 MessageBox.Show(

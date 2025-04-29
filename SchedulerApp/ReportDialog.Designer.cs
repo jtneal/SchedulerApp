@@ -30,10 +30,8 @@
         {
             closeButton = new Button();
             reportLabel = new Label();
-            reportPanel = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            reportPanel.SuspendLayout();
+            reportGrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)reportGrid).BeginInit();
             SuspendLayout();
             // 
             // closeButton
@@ -56,43 +54,13 @@
             reportLabel.TabIndex = 1;
             reportLabel.Text = "Report Label";
             // 
-            // reportPanel
+            // reportGrid
             // 
-            reportPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            reportPanel.ColumnCount = 2;
-            reportPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            reportPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
-            reportPanel.Controls.Add(label1, 0, 0);
-            reportPanel.Controls.Add(label2, 1, 0);
-            reportPanel.Location = new Point(20, 67);
-            reportPanel.Name = "reportPanel";
-            reportPanel.RowCount = 1;
-            reportPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            reportPanel.Size = new Size(506, 20);
-            reportPanel.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ImageAlign = ContentAlignment.BottomCenter;
-            label1.Location = new Point(4, 1);
-            label1.Name = "label1";
-            label1.Size = new Size(59, 21);
-            label1.TabIndex = 0;
-            label1.Text = "Month";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(206, 1);
-            label2.Name = "label2";
-            label2.Size = new Size(238, 21);
-            label2.TabIndex = 1;
-            label2.Text = "Number of Appointment Types";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
+            reportGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            reportGrid.Location = new Point(20, 63);
+            reportGrid.Name = "reportGrid";
+            reportGrid.Size = new Size(506, 292);
+            reportGrid.TabIndex = 3;
             // 
             // ReportDialog
             // 
@@ -100,13 +68,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = closeButton;
             ClientSize = new Size(555, 450);
-            Controls.Add(reportPanel);
+            Controls.Add(reportGrid);
             Controls.Add(reportLabel);
             Controls.Add(closeButton);
             Name = "ReportDialog";
             Text = "ReportDialog";
-            reportPanel.ResumeLayout(false);
-            reportPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)reportGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -115,8 +82,6 @@
 
         private Button closeButton;
         private Label reportLabel;
-        private TableLayoutPanel reportPanel;
-        private Label label1;
-        private Label label2;
+        private DataGridView reportGrid;
     }
 }

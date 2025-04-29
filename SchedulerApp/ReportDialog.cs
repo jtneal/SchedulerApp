@@ -1,13 +1,5 @@
 ﻿using SchedulerApp.DAL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SchedulerApp
 {
@@ -39,10 +31,11 @@ namespace SchedulerApp
         {
             Text = "Number of Appointment Types by Month";
             reportLabel.Text = Text;
-            reportPanel.Height = 26;
 
-            var i = 1;
-            var rows = dal.appointment.GetAppointments()
+            reportGrid.Columns.Add("report_month", "Month");
+            reportGrid.Columns.Add("type_count", "Number of Appointment Types");
+
+            var appointments = dal.appointment.GetAppointments()
                 .GroupBy(x => x.start.ToString("MMMM yyyy"))
                 .Select(x => new {
                     report_month = x.Key,
@@ -50,12 +43,13 @@ namespace SchedulerApp
                 })
                 .ToList();
 
-            foreach (var row in rows)
+            foreach (var appointment in appointments)
             {
-                reportPanel.Controls.Add(new Label() { Height = 20, TextAlign = ContentAlignment.MiddleLeft, Text = row.report_month, Width = 200 }, 0, i);
-                reportPanel.Controls.Add(new Label() { Height = 20, TextAlign = ContentAlignment.MiddleLeft, Text = row.type_count.ToString(), Width = 200 }, 1, i);
-                reportPanel.Height += 21;
-                i++;
+                var rowId = reportGrid.Rows.Add();
+                var row = reportGrid.Rows[rowId];
+
+                row.Cells[0].Value = appointment.report_month;
+                row.Cells[1].Value = appointment.type_count;
             }
         }
 
@@ -63,12 +57,57 @@ namespace SchedulerApp
         {
             Text = "Schedule for Each User";
             reportLabel.Text = Text;
+
+            reportGrid.Columns.Add("user", "User");
+            reportGrid.Columns.Add("type", "Type");
+            reportGrid.Columns.Add("start", "Start");
+            reportGrid.Columns.Add("end", "End");
+
+            var appointments = dal.appointment.GetAllAppointments()
+                .Select(x => new {
+                    user = x.userName,
+                    x.type,
+                    x.start,
+                    x.end,
+                })
+                .ToList();
+
+            foreach (var appointment in appointments)
+            {
+                var rowId = reportGrid.Rows.Add();
+                var row = reportGrid.Rows[rowId];
+
+                row.Cells[0].Value = appointment.user;
+                row.Cells[1].Value = appointment.type;
+                row.Cells[2].Value = appointment.start;
+                row.Cells[3].Value = appointment.end;
+            }
         }
 
         public void SetupReport3()
         {
             Text = "Time Consumed by Each Customer";
             reportLabel.Text = Text;
+
+            reportGrid.Columns.Add("customer", "Customer");
+            reportGrid.Columns.Add("consumed", "Time Consumed (in minutes)");
+
+            var times = dal.appointment.GetAllAppointments()
+                .GroupBy(x => new { x.customerId, x.customerName })
+                .Select(x => new {
+                    customer = x.Key.customerName,
+                    consumed = x.Sum(y => y.end.Subtract(y.start).TotalMinutes),
+                })
+                .ToList();
+
+            foreach (var time in times)
+            {
+                var rowId = reportGrid.Rows.Add();
+                var row = reportGrid.Rows[rowId];
+
+                row.Cells[0].Value = time.customer;
+                row.Cells[1].Value = time.consumed;
+            }
         }
     }
 }

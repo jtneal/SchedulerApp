@@ -1,10 +1,10 @@
-﻿namespace SchedulerApp.Models
+﻿using SchedulerApp.Entities;
+
+namespace SchedulerApp.Models
 {
-    public class AppointmentModel
+    public class AppointmentModel : Appointment
     {
+        public required string userName { get; set; }
         public required string customerName { get; set; }
-        public required string type { get; set; }
-        public required DateTime start { get; set; }
-        public required DateTime end { get; set; }
     }
 }

@@ -102,7 +102,7 @@ namespace SchedulerApp.DAL
             try
             {
                 connection.Open();
-                var query = "SELECT c.customerName, a.type, a.start, a.end FROM appointment a, customer c WHERE a.customerId = c.customerId AND DATE(a.start) = @date ORDER BY start ASC";
+                var query = "SELECT a.appointmentId, a.customerId, c.customerName, a.userId, u.userName, a.type, a.start, a.end, a.createDate, a.createdBy, a.lastUpdate, a.lastUpdateBy FROM appointment a, customer c, user u WHERE a.customerId = c.customerId AND a.userId = u.userId AND DATE(a.start) = @date ORDER BY start ASC";
                 using var command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("date", date);
                 using var reader = command.ExecuteReader();
@@ -111,10 +111,18 @@ namespace SchedulerApp.DAL
                 {
                     appointments.Add(new AppointmentModel()
                     {
+                        appointmentId = reader.GetInt32("appointmentId"),
+                        customerId = reader.GetInt32("customerId"),
                         customerName = reader.GetString("customerName"),
+                        userId = reader.GetInt32("userId"),
+                        userName = reader.GetString("userName"),
                         type = reader.GetString("type"),
                         start = reader.GetDateTime("start").ToLocalTime(),
                         end = reader.GetDateTime("end").ToLocalTime(),
+                        createDate = reader.GetDateTime("createDate"),
+                        createdBy = reader.GetString("createdBy"),
+                        lastUpdate = reader.GetDateTime("lastUpdate"),
+                        lastUpdateBy = reader.GetString("lastUpdateBy"),
                     });
                 }
             }
@@ -130,10 +138,18 @@ namespace SchedulerApp.DAL
         {
             var appointment = new AppointmentModel()
             {
+                appointmentId = int.MinValue,
+                customerId = int.MinValue,
                 customerName = string.Empty,
+                userId = int.MinValue,
+                userName = string.Empty,
                 type = string.Empty,
                 start = DateTime.MinValue,
                 end = DateTime.MinValue,
+                createDate = DateTime.MinValue,
+                createdBy = string.Empty,
+                lastUpdate = DateTime.MinValue,
+                lastUpdateBy = string.Empty,
             };
 
             using var connection = new MySqlConnection(_connectionString);
@@ -161,6 +177,47 @@ namespace SchedulerApp.DAL
             }
 
             return appointment;
+        }
+
+        public List<AppointmentModel> GetAllAppointments()
+        {
+            var appointments = new List<AppointmentModel>();
+
+            using var connection = new MySqlConnection(_connectionString);
+
+            try
+            {
+                connection.Open();
+                var query = "SELECT a.appointmentId, a.customerId, c.customerName, a.userId, u.userName, a.type, a.start, a.end, a.createDate, a.createdBy, a.lastUpdate, a.lastUpdateBy FROM appointment a, customer c, user u WHERE a.userId = u.userId AND a.customerId = c.customerId";
+                using var command = new MySqlCommand(query, connection);
+                using var reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Debug.WriteLine("!!!");
+                    appointments.Add(new AppointmentModel()
+                    {
+                        appointmentId = reader.GetInt32("appointmentId"),
+                        customerId = reader.GetInt32("customerId"),
+                        customerName = reader.GetString("customerName"),
+                        userId = reader.GetInt32("userId"),
+                        userName = reader.GetString("userName"),
+                        type = reader.GetString("type"),
+                        start = reader.GetDateTime("start").ToLocalTime(),
+                        end = reader.GetDateTime("end").ToLocalTime(),
+                        createDate = reader.GetDateTime("createDate"),
+                        createdBy = reader.GetString("createdBy"),
+                        lastUpdate = reader.GetDateTime("lastUpdate"),
+                        lastUpdateBy = reader.GetString("lastUpdateBy"),
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+
+            return appointments;
         }
 
         public List<Appointment> GetAppointments()
