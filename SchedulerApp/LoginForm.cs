@@ -1,10 +1,4 @@
-using Google.Protobuf.WellKnownTypes;
-using MySql.Data.MySqlClient;
 using SchedulerApp.DAL;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
 
 namespace SchedulerApp
 {
@@ -26,13 +20,11 @@ namespace SchedulerApp
         private void loginButton_Click(object sender, EventArgs e)
         {
             var user = dal.user.GetUser(usernameTextBox.Text, passwordTextBox.Text);
+            using var sw = File.AppendText(@"..\..\..\Login_History.txt");
 
             if (user.userId > 0)
             {
-                // Successful login!
-                using var sw = File.AppendText(@"..\..\..\Login_History.txt");
-
-                sw.WriteLine($"{DateTimeOffset.Now.ToUnixTimeSeconds()}\t{user.userName}");
+                sw.WriteLine($"{DateTimeOffset.Now.ToUnixTimeSeconds()}\t{usernameTextBox.Text}\tsuccess");
 
                 var form = new MainScreen(dal, user);
 
@@ -42,6 +34,7 @@ namespace SchedulerApp
             }
             else
             {
+                sw.WriteLine($"{DateTimeOffset.Now.ToUnixTimeSeconds()}\t{usernameTextBox.Text}\tfail");
                 errorLabel.Visible = true;
             }
         }
