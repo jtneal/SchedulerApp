@@ -78,13 +78,13 @@ namespace SchedulerApp
         {
             try
             {
-                var country = dal.address.GetCountryByName(countryTextBox.Text);
+                var country = dal.address.GetCountryByName(countryTextBox.Text.Trim());
 
                 if (country.countryId <= 0)
                 {
                     country = new Country()
                     {
-                        country = countryTextBox.Text,
+                        country = countryTextBox.Text.Trim(),
                         createDate = DateTime.Now.Date,
                         createdBy = user.userName,
                         lastUpdate = DateTime.Now,
@@ -94,13 +94,13 @@ namespace SchedulerApp
                     country.countryId = dal.address.CreateCountry(country);
                 }
 
-                var city = dal.address.GetCityByName(cityTextBox.Text);
+                var city = dal.address.GetCityByName(cityTextBox.Text.Trim());
 
                 if (city.cityId <= 0)
                 {
                     city = new City()
                     {
-                        city = cityTextBox.Text,
+                        city = cityTextBox.Text.Trim(),
                         countryId = country.countryId,
                         createDate = DateTime.Now.Date,
                         createdBy = user.userName,
@@ -118,11 +118,11 @@ namespace SchedulerApp
                     dal.address.UpdateAddress(new Address()
                     {
                         addressId = customer.addressId,
-                        address = addressLine1TextBox.Text,
-                        address2 = addressLine2TextBox.Text,
+                        address = addressLine1TextBox.Text.Trim(),
+                        address2 = addressLine2TextBox.Text.Trim(),
                         cityId = city.cityId,
-                        postalCode = postalCodeTextBox.Text,
-                        phone = phoneNumberTextBox.Text,
+                        postalCode = postalCodeTextBox.Text.Trim(),
+                        phone = phoneNumberTextBox.Text.Trim(),
                         lastUpdate = DateTime.Now,
                         lastUpdateBy = user.userName,
                     });
@@ -133,11 +133,11 @@ namespace SchedulerApp
                 {
                     addressId = dal.address.CreateAddress(new Address()
                     {
-                        address = addressLine1TextBox.Text,
-                        address2 = addressLine2TextBox.Text,
+                        address = addressLine1TextBox.Text.Trim(),
+                        address2 = addressLine2TextBox.Text.Trim(),
                         cityId = city.cityId,
-                        postalCode = postalCodeTextBox.Text,
-                        phone = phoneNumberTextBox.Text,
+                        postalCode = postalCodeTextBox.Text.Trim(),
+                        phone = phoneNumberTextBox.Text.Trim(),
                         createDate = DateTime.Now.Date,
                         createdBy = user.userName,
                         lastUpdate = DateTime.Now,
@@ -150,7 +150,7 @@ namespace SchedulerApp
                     dal.customer.UpdateCustomer(new Customer()
                     {
                         customerId = customer.customerId,
-                        customerName = nameTextBox.Text,
+                        customerName = nameTextBox.Text.Trim(),
                         addressId = addressId,
                         active = activeCheckBox.Checked ? 1 : 0,
                         lastUpdate = DateTime.Now,
@@ -161,7 +161,7 @@ namespace SchedulerApp
                 {
                     dal.customer.CreateCustomer(new Customer()
                     {
-                        customerName = nameTextBox.Text,
+                        customerName = nameTextBox.Text.Trim(),
                         addressId = addressId,
                         active = activeCheckBox.Checked ? 1 : 0,
                         createDate = DateTime.Now.Date,
