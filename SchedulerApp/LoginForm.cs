@@ -1,4 +1,5 @@
 using SchedulerApp.DAL;
+using System.Globalization;
 
 namespace SchedulerApp
 {
@@ -8,6 +9,11 @@ namespace SchedulerApp
 
         public LoginForm()
         {
+            var region = RegionInfo.CurrentRegion;
+            var code = region.TwoLetterISORegionName;
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(region.TwoLetterISORegionName);
+
             InitializeComponent();
             dal = new CompositeDAL();
         }
