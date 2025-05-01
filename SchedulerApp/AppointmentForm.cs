@@ -1,8 +1,7 @@
 ﻿using SchedulerApp.DAL;
 using SchedulerApp.Entities;
-using System;
-using System.Diagnostics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.ComponentModel;
+using System.Threading;
 
 namespace SchedulerApp
 {
@@ -47,7 +46,7 @@ namespace SchedulerApp
                 typeLabel.ForeColor = Color.Black;
             }
 
-            if (!IsBusinessDay(startDateTimePicker.Value) || !IsBusinessHours(startDateTimePicker.Value))
+            if (!IsBusinessDay(startDateTimePicker.Value.ToUniversalTime()) || !IsBusinessHours(startDateTimePicker.Value.ToUniversalTime()))
             {
                 startLabel.ForeColor = Color.Red;
                 valid = false;
@@ -57,7 +56,7 @@ namespace SchedulerApp
                 startLabel.ForeColor = Color.Black;
             }
 
-            if (!IsBusinessDay(endDateTimePicker.Value) || !IsBusinessHours(endDateTimePicker.Value) || startDateTimePicker.Value.Date != endDateTimePicker.Value.Date || startDateTimePicker.Value >= endDateTimePicker.Value)
+            if (!IsBusinessDay(endDateTimePicker.Value.ToUniversalTime()) || !IsBusinessHours(endDateTimePicker.Value.ToUniversalTime()) || startDateTimePicker.Value.Date != endDateTimePicker.Value.Date || startDateTimePicker.Value >= endDateTimePicker.Value)
             {
                 endLabel.ForeColor = Color.Red;
                 valid = false;
@@ -72,13 +71,23 @@ namespace SchedulerApp
 
         protected static bool IsBusinessDay(DateTime dateTime)
         {
-            return dateTime.DayOfWeek != DayOfWeek.Saturday && dateTime.DayOfWeek != DayOfWeek.Sunday;
+            var eastern = ToEastern(dateTime);
+
+            return eastern.DayOfWeek != DayOfWeek.Saturday && eastern.DayOfWeek != DayOfWeek.Sunday;
         }
 
         protected static bool IsBusinessHours(DateTime dateTime)
         {
-            return true;
-            return dateTime.Hour >= 9 && (dateTime.Hour <= 16 || (dateTime.Hour == 17 && dateTime.Minute == 0 && dateTime.Second == 0));
+            var eastern = ToEastern(dateTime);
+
+            return eastern.Hour >= 9 && (eastern.Hour <= 16 || (eastern.Hour == 17 && eastern.Minute == 0 && eastern.Second == 0));
+        }
+
+        protected static DateTime ToEastern(DateTime dateTime)
+        {
+            var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+
+            return TimeZoneInfo.ConvertTimeFromUtc(dateTime, eastern);
         }
 
         /***********************
@@ -100,8 +109,8 @@ namespace SchedulerApp
                 {
                     customerComboBox.SelectedValue = appointment.customerId;
                     typeTextBox.Text = appointment.type;
-                    startDateTimePicker.Value = appointment.start;
-                    endDateTimePicker.Value = appointment.end;
+                    startDateTimePicker.Value = appointment.start.ToLocalTime();
+                    endDateTimePicker.Value = appointment.end.ToLocalTime();
                 }
             }
         }
@@ -122,7 +131,7 @@ namespace SchedulerApp
                 // Check for conflicting appointments
                 // Search for start dates that exist any time before our end date
                 // and end times that exist any time after our start date
-                if (dal.appointment.HasConflict(appointmentId, startDateTimePicker.Value, endDateTimePicker.Value))
+                if (dal.appointment.HasConflict(appointmentId, startDateTimePicker.Value.ToUniversalTime(), endDateTimePicker.Value.ToUniversalTime()))
                 {
                     MessageBox.Show("You have another appointment that conflicts with this one. Please adjust your appointment time and try again.", "Error");
                 }
